@@ -7,6 +7,7 @@ import biz.ganttproject.core.time.TimeUnitStack;
 import biz.ganttproject.core.time.impl.GPTimeUnitStack;
 import junit.framework.TestCase;
 import net.sourceforge.ganttproject.gui.NotificationManager;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.resource.HumanResource;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.roles.RoleManager;
@@ -147,7 +148,7 @@ public class TestResourceAssignments extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        myHumanResourceManager = new HumanResourceManager(RoleManager.Access
+        myHumanResourceManager = new DefaultHumanResourceManager(RoleManager.Access
                 .getInstance().getDefaultRole(), null);
         getResourceManager().create("test resource#1", 1);
         getResourceManager().create("test resource#2", 2);
@@ -178,7 +179,7 @@ public class TestResourceAssignments extends TestCase {
             }
 
             @Override
-            public HumanResourceManager getResourceManager() {
+            public DefaultHumanResourceManager getResourceManager() {
                 return null;
             }
 

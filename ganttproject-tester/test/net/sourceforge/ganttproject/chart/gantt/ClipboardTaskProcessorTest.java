@@ -25,8 +25,8 @@ import junit.framework.TestCase;
 import net.sourceforge.ganttproject.GanttTask;
 import net.sourceforge.ganttproject.TestSetupHelper;
 import net.sourceforge.ganttproject.TestSetupHelper.TaskManagerBuilder;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.resource.HumanResource;
-import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.task.ResourceAssignment;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskManager;
@@ -119,7 +119,7 @@ public class ClipboardTaskProcessorTest extends TestCase {
 
   public void testAssignmentsCopy() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    HumanResourceManager hrMgr = builder.getResourceManager();
+    DefaultHumanResourceManager hrMgr = builder.getResourceManager();
     TaskManager taskManager = builder.build();
     Task task1 = taskManager.newTaskBuilder().build();
 
@@ -142,7 +142,7 @@ public class ClipboardTaskProcessorTest extends TestCase {
 
   public void testAssignmentsCut() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    HumanResourceManager hrMgr = builder.getResourceManager();
+    DefaultHumanResourceManager hrMgr = builder.getResourceManager();
     TaskManager taskManager = builder.build();
     Task task1 = taskManager.newTaskBuilder().build();
 
@@ -168,7 +168,7 @@ public class ClipboardTaskProcessorTest extends TestCase {
 
   public void testAssignmentsTruncated() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    HumanResourceManager hrMgr = builder.getResourceManager();
+    DefaultHumanResourceManager hrMgr = builder.getResourceManager();
     TaskManager taskManager = builder.build();
     Task task1 = taskManager.newTaskBuilder().build();
 

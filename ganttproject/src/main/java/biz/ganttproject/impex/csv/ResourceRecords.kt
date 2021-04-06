@@ -19,7 +19,7 @@ along with GanttProject.  If not, see <http://www.gnu.org/licenses/>.
 package biz.ganttproject.impex.csv
 
 import net.sourceforge.ganttproject.ResourceDefaultColumn
-import net.sourceforge.ganttproject.language.GanttLanguage
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager
 import net.sourceforge.ganttproject.resource.HumanResourceManager
 import net.sourceforge.ganttproject.roles.RoleManager
 
@@ -29,8 +29,8 @@ import net.sourceforge.ganttproject.roles.RoleManager
  * @author dbarashev (Dmitry Barashev)
  */
 internal class ResourceRecords(
-    private val resourceManager: HumanResourceManager,
-    private val myRoleManager: RoleManager) : RecordGroup(
+  private val resourceManager: HumanResourceManager,
+  private val myRoleManager: RoleManager) : RecordGroup(
       name = "Resource group",
       regularFields = (
           ResourceDefaultColumn.values().map { it.toString() } + listOf(

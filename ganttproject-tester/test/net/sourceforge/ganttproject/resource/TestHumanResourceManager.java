@@ -23,7 +23,7 @@ import net.sourceforge.ganttproject.task.CustomColumnsManager;
 
 public class TestHumanResourceManager extends TestCase {
   public void testUpResource() {
-    HumanResourceManager manager = new HumanResourceManager(null, new CustomColumnsManager());
+    HumanResourceManager manager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
     var resource1 = manager.newHumanResource();
     resource1.setName("TEST_RESSOURCE1");
     manager.add(resource1);
@@ -43,7 +43,7 @@ public class TestHumanResourceManager extends TestCase {
   }
 
   public void testDownResource() {
-    HumanResourceManager manager = new HumanResourceManager(null, new CustomColumnsManager());
+    HumanResourceManager manager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
     var resource1 = manager.newHumanResource();
     resource1.setName("TEST_RESSOURCE1");
     manager.add(resource1);
@@ -62,7 +62,7 @@ public class TestHumanResourceManager extends TestCase {
   }
 
   public void testClear() {
-    HumanResourceManager manager = new HumanResourceManager(null, new CustomColumnsManager());
+    HumanResourceManager manager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
     var resource1 = manager.newHumanResource();
     manager.add(resource1);
 

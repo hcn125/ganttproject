@@ -24,15 +24,10 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import net.sourceforge.ganttproject.resource.AssignmentNode;
-import net.sourceforge.ganttproject.resource.HumanResource;
-import net.sourceforge.ganttproject.resource.HumanResourceManager;
-import net.sourceforge.ganttproject.resource.ResourceNode;
-import net.sourceforge.ganttproject.resource.ResourceTableNode;
+import net.sourceforge.ganttproject.resource.*;
 import net.sourceforge.ganttproject.task.ResourceAssignment;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskManager;
-import net.sourceforge.ganttproject.task.event.TaskHierarchyEvent;
 import net.sourceforge.ganttproject.task.event.TaskListenerAdapter;
 import net.sourceforge.ganttproject.task.event.TaskScheduleEvent;
 
@@ -62,7 +57,7 @@ public class ResourceTreeTableModel extends DefaultTreeTableModel {
   private final CustomPropertyManager myCustomPropertyManager;
 
   public ResourceTreeTableModel(HumanResourceManager resMgr, TaskManager taskManager,
-      CustomPropertyManager customPropertyManager) {
+                                CustomPropertyManager customPropertyManager) {
     super();
     myCustomPropertyManager = customPropertyManager;
     myResourceManager = resMgr;

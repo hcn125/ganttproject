@@ -76,6 +76,7 @@ import net.sourceforge.ganttproject.parser.GPParser;
 import net.sourceforge.ganttproject.parser.ParserFactory;
 import net.sourceforge.ganttproject.plugins.PluginManager;
 import net.sourceforge.ganttproject.print.PrintManager;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.resource.ResourceEvent;
 import net.sourceforge.ganttproject.resource.ResourceView;
@@ -179,7 +180,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   private ParserFactory myParserFactory;
 
-  private HumanResourceManager myHumanResourceManager;
+  private DefaultHumanResourceManager myHumanResourceManager;
 
   private RoleManager myRoleManager;
 
@@ -1011,7 +1012,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   @Override
   public HumanResourceManager getHumanResourceManager() {
     if (myHumanResourceManager == null) {
-      myHumanResourceManager = new HumanResourceManager(getRoleManager().getDefaultRole(),
+      myHumanResourceManager = new DefaultHumanResourceManager(getRoleManager().getDefaultRole(),
           getResourceCustomPropertyManager());
       myHumanResourceManager.addView(this);
     }

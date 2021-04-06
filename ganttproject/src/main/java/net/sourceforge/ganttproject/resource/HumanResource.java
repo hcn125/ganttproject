@@ -272,7 +272,7 @@ public class HumanResource implements CustomPropertyHolder {
 
     @Override
     public String getValueAsString() {
-      return HumanResourceManager.getValueAsString(myValue);
+      return DefaultHumanResourceManager.getValueAsString(myValue);
     }
   }
 

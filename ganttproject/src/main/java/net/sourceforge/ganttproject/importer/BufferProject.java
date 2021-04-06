@@ -34,6 +34,7 @@ import net.sourceforge.ganttproject.io.GanttXMLOpen;
 import net.sourceforge.ganttproject.io.GanttXMLSaver;
 import net.sourceforge.ganttproject.parser.GPParser;
 import net.sourceforge.ganttproject.parser.ParserFactory;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.roles.RoleManager;
 import net.sourceforge.ganttproject.task.CustomColumnsManager;
@@ -51,7 +52,7 @@ public class BufferProject extends GanttProjectImpl implements ParserFactory {
   final UIFacade myUIfacade;
   private final ColumnList myVisibleFields = new VisibleFieldsImpl();
   final ColumnList myResourceVisibleFields = new VisibleFieldsImpl();
-  private final HumanResourceManager myBufferResourceManager;
+  private final DefaultHumanResourceManager myBufferResourceManager;
 
   public BufferProject(IGanttProject targetProject, UIFacade uiFacade) {
     this(targetProject.getTaskManager(), targetProject.getRoleManager(), targetProject.getActiveCalendar(), uiFacade);
@@ -71,7 +72,7 @@ public class BufferProject extends GanttProjectImpl implements ParserFactory {
     myUIfacade = uiFacade;
     getTaskManager().getDependencyHardnessOption().setValue(targetTaskManager.getDependencyHardnessOption().getValue());
     getTaskManager().getCalendar().importCalendar(targetCalendar, new ImportCalendarOption(ImportCalendarOption.Values.REPLACE));
-    myBufferResourceManager = new HumanResourceManager(RoleManager.Access.getInstance().getDefaultRole(),
+    myBufferResourceManager = new DefaultHumanResourceManager(RoleManager.Access.getInstance().getDefaultRole(),
         new CustomColumnsManager(), targetRoleManager);
   }
 

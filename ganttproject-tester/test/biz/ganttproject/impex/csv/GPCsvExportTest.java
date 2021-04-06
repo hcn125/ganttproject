@@ -10,6 +10,7 @@ import net.sourceforge.ganttproject.CustomPropertyManager;
 import net.sourceforge.ganttproject.GanttTask;
 import net.sourceforge.ganttproject.io.CSVOptions;
 import net.sourceforge.ganttproject.language.GanttLanguage;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.resource.HumanResource;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
 import net.sourceforge.ganttproject.roles.RoleManager;
@@ -41,7 +42,7 @@ public class GPCsvExportTest extends TaskTestCase {
   }
 
   public void testResourceCustomFields() throws Exception {
-    HumanResourceManager hrManager = new HumanResourceManager(null, new CustomColumnsManager());
+    HumanResourceManager hrManager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
     TaskManager taskManager = getTaskManager();
     RoleManager roleManager = new RoleManagerImpl();
     CSVOptions csvOptions = enableOnly("id");
@@ -73,7 +74,7 @@ public class GPCsvExportTest extends TaskTestCase {
   }
 
   public void testTaskCustomFields() throws Exception {
-    HumanResourceManager hrManager = new HumanResourceManager(null, new CustomColumnsManager());
+    HumanResourceManager hrManager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
     TaskManager taskManager = getTaskManager();
     RoleManager roleManager = new RoleManagerImpl();
     CSVOptions csvOptions = enableOnly(TaskDefaultColumn.ID.getStub().getID());
@@ -106,7 +107,7 @@ public class GPCsvExportTest extends TaskTestCase {
   }
 
   public void testResourceAssignments() throws Exception {
-    HumanResourceManager hrManager = new HumanResourceManager(null, new CustomColumnsManager());
+    HumanResourceManager hrManager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
     TaskManager taskManager = getTaskManager();
     CSVOptions csvOptions = enableOnly(TaskDefaultColumn.ID.getStub().getID(), TaskDefaultColumn.RESOURCES.getStub().getID());
 
@@ -159,7 +160,7 @@ public class GPCsvExportTest extends TaskTestCase {
     CSVOptions csvOptions = enableOnly(TaskDefaultColumn.ID.getStub().getID(), TaskDefaultColumn.COLOR.getStub().getID());
     GanttCSVExport exporter = new GanttCSVExport(
         taskManager,
-        new HumanResourceManager(null, new CustomColumnsManager()),
+        new DefaultHumanResourceManager(null, new CustomColumnsManager()),
         new RoleManagerImpl(),
         csvOptions
     );
@@ -185,7 +186,7 @@ public class GPCsvExportTest extends TaskTestCase {
     {
       GanttCSVExport exporter = new GanttCSVExport(
           taskManager,
-          new HumanResourceManager(null, new CustomColumnsManager()),
+          new DefaultHumanResourceManager(null, new CustomColumnsManager()),
           new RoleManagerImpl(),
           csvOptions
       );
@@ -204,7 +205,7 @@ public class GPCsvExportTest extends TaskTestCase {
     {
       GanttCSVExport exporter = new GanttCSVExport(
           taskManager,
-          new HumanResourceManager(null, new CustomColumnsManager()),
+          new DefaultHumanResourceManager(null, new CustomColumnsManager()),
           new RoleManagerImpl(),
           csvOptions
       );
