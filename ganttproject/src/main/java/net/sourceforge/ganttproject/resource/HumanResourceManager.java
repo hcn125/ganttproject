@@ -28,7 +28,6 @@ import net.sourceforge.ganttproject.roles.RoleManager;
 import net.sourceforge.ganttproject.undo.GPUndoManager;
 
 import java.io.OutputStream;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,63 +38,6 @@ import java.util.Map;
  * @author barmeier
  */
 public class HumanResourceManager {
-
-  public abstract static class ResourceBuilder {
-    String myName;
-    Integer myID;
-    String myEmail;
-    String myPhone;
-    String myRole;
-    BigDecimal myStandardRate;
-
-    public ResourceBuilder withName(String name) {
-      myName = name;
-      return this;
-    }
-
-    public ResourceBuilder withID(String id) {
-      myID = Integer.valueOf(id);
-      return this;
-    }
-
-    public ResourceBuilder withID(Integer id) {
-      myID = id;
-      return this;
-    }
-
-    public ResourceBuilder withEmail(String email) {
-      myEmail = email;
-      return this;
-    }
-
-    public ResourceBuilder withPhone(String phone) {
-      myPhone = phone;
-      return this;
-    }
-
-    public ResourceBuilder withRole(String role) {
-      myRole = role;
-      return this;
-    }
-
-    public ResourceBuilder withStandardRate(String rate) {
-      if (rate != null) {
-        try {
-          myStandardRate = new BigDecimal(rate);
-        } catch (NumberFormatException e) {
-          myStandardRate = null;
-        }
-      }
-      return this;
-    }
-
-    public ResourceBuilder withStandardRate(BigDecimal rate) {
-      myStandardRate = rate;
-      return this;
-    }
-
-    public abstract HumanResource build();
-  }
 
   private List<ResourceView> myViews = new ArrayList<ResourceView>();
 
