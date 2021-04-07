@@ -42,6 +42,8 @@ public class ResourceActionSet {
 
   private final AssignmentDeleteAction myAssignmentDelete;
 
+  private final OpenGlobalResourcesAction openGlobalResourcesAction;
+
   private AbstractAction[] myActions;
 
   public ResourceActionSet(ResourceContext resourceContext, AssignmentContext assignmentContext,
@@ -54,6 +56,7 @@ public class ResourceActionSet {
     myResourceMoveDownAction = new ResourceMoveDownAction(table);
     myResourceSendMailAction = new ResourceSendMailAction(table);
     myAssignmentDelete = new AssignmentDeleteAction(assignmentContext, uiFacade);
+    openGlobalResourcesAction = new OpenGlobalResourcesAction(projectFrame, uiFacade);
   }
 
   public AbstractAction[] getActions() {
@@ -61,7 +64,7 @@ public class ResourceActionSet {
       myResourceNewAction.putValue(Action.SHORT_DESCRIPTION, null);
       myResourcePropertiesAction.putValue(Action.SHORT_DESCRIPTION, null);
       myResourceSendMailAction.putValue(Action.SHORT_DESCRIPTION, null);
-      myActions = new AbstractAction[] { myResourceNewAction, myResourcePropertiesAction };
+      myActions = new AbstractAction[] {openGlobalResourcesAction, myResourceNewAction, myResourcePropertiesAction};
     }
     return myActions;
   }

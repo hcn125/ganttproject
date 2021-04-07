@@ -721,7 +721,7 @@ public abstract class GPTreeTableBase extends JXTreeTable implements CustomPrope
     getTableHeaderUiFacade().importData(ColumnList.Immutable.fromList(getDefaultColumns()), false);
   }
 
-  void initTreeTable() {
+  public void initTreeTable() {
     doInit();
   }
 
