@@ -8,7 +8,7 @@ import static org.mockito.Mockito.*;
 public class TestHumanResource extends TestCase {
   public void testCopyConstructor() {
     var manager = new DefaultHumanResourceManager(null, new CustomColumnsManager());
-    HumanResource humanResource = new HumanResource("TEST_NAME", 5, manager);
+    HumanResource humanResource = new OwnedHumanResource("TEST_NAME", 5, manager);
     humanResource.setDescription("TEST_DESCRIPTION");
     humanResource.setRole(mock(Role.class));
     var humanResourceCopy = humanResource.unpluggedClone();

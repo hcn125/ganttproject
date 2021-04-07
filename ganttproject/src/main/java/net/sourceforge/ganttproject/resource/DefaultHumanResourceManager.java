@@ -63,7 +63,7 @@ public class DefaultHumanResourceManager implements HumanResourceManager {
 
   @Override
   public HumanResource newHumanResource() {
-    HumanResource result = new HumanResource("", -1, this);
+    HumanResource result = new OwnedHumanResource("", -1, this);
     result.setRole(myDefaultRole);
     return result;
   }
@@ -77,7 +77,7 @@ public class DefaultHumanResourceManager implements HumanResourceManager {
         if (myName == null || myID == null) {
           return null;
         }
-        HumanResource result = new HumanResource(myName, myID, DefaultHumanResourceManager.this);
+        HumanResource result = new OwnedHumanResource(myName, myID, DefaultHumanResourceManager.this);
         Role role = null;
         if (myRole != null && myRoleManager != null) {
           role = myRoleManager.getRole(myRole);
@@ -97,7 +97,7 @@ public class DefaultHumanResourceManager implements HumanResourceManager {
   }
   @Override
   public HumanResource create(String name, int i) {
-    HumanResource hr = new HumanResource(name, i, this);
+    HumanResource hr = new OwnedHumanResource(name, i, this);
     hr.setRole(myDefaultRole);
     add(hr);
     return hr;
@@ -237,7 +237,7 @@ public class DefaultHumanResourceManager implements HumanResourceManager {
       HumanResource foreignHR = foreignResources.get(i);
       HumanResource nativeHR = merger.findNative(foreignHR, this);
       if (nativeHR == null) {
-        nativeHR = new HumanResource(foreignHR.getName(), nextFreeId + createdResources.size(), this);
+        nativeHR = new OwnedHumanResource(foreignHR.getName(), nextFreeId + createdResources.size(), this);
         nativeHR.setRole(myDefaultRole);
         createdResources.add(nativeHR);
       }

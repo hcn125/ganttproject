@@ -21,6 +21,7 @@ package net.sourceforge.ganttproject.task.algorithm;
 import net.sourceforge.ganttproject.TestSetupHelper;
 import net.sourceforge.ganttproject.TestSetupHelper.TaskManagerBuilder;
 import net.sourceforge.ganttproject.resource.HumanResource;
+import net.sourceforge.ganttproject.resource.OwnedHumanResource;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.test.task.TaskTestCase;
@@ -55,10 +56,10 @@ public class CostAlgorithmTest extends TaskTestCase {
   public void testResourceCost() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
     setTaskManager(builder.build());
-    HumanResource joe = new HumanResource("Joe", 1, builder.getResourceManager());
+    HumanResource joe = new OwnedHumanResource("Joe", 1, builder.getResourceManager());
     joe.setStandardPayRate(BigDecimal.valueOf(5));
 
-    HumanResource jane = new HumanResource("Jane", 2, builder.getResourceManager());
+    HumanResource jane = new OwnedHumanResource("Jane", 2, builder.getResourceManager());
     jane.setStandardPayRate(BigDecimal.valueOf(10));
 
     builder.getResourceManager().add(joe);
@@ -79,7 +80,7 @@ public class CostAlgorithmTest extends TaskTestCase {
   public void testResourceTotalCost() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
     setTaskManager(builder.build());
-    HumanResource joe = new HumanResource("Joe", 1, builder.getResourceManager());
+    HumanResource joe = new OwnedHumanResource("Joe", 1, builder.getResourceManager());
     joe.setStandardPayRate(BigDecimal.valueOf(5));
 
     assertEquals(BigDecimal.ZERO, joe.getTotalCost());

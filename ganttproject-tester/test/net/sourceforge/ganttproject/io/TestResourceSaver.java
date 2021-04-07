@@ -5,6 +5,7 @@ import net.sourceforge.ganttproject.CustomPropertyManager;
 import net.sourceforge.ganttproject.IGanttProject;
 import net.sourceforge.ganttproject.resource.HumanResource;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
+import net.sourceforge.ganttproject.resource.OwnedHumanResource;
 import net.sourceforge.ganttproject.roles.Role;
 import org.xml.sax.SAXException;
 
@@ -25,7 +26,7 @@ public class TestResourceSaver extends TestCase {
 
     var resources = new ArrayList<HumanResource>();
 
-    var resource = new HumanResource("TEST_RESOURCE", 1, manager);
+    var resource = new OwnedHumanResource("TEST_RESOURCE", 1, manager);
 
     var role = mock(Role.class);
     when(role.getPersistentID()).thenReturn("TEST_PERSISTENT_ID");
