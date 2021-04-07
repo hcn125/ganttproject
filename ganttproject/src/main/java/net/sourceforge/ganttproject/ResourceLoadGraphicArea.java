@@ -69,7 +69,7 @@ public class ResourceLoadGraphicArea extends ChartComponentBase implements Resou
         getUIConfiguration(), this);
     myChartImplementation = new ResourcechartImplementation(app.getProject(), getUIFacade(), myChartModel, this);
     myViewState = new ChartViewState(this, app.getUIFacade());
-    app.getUIFacade().getZoomManager().addZoomListener(myViewState);
+    app.getZoomManager().addZoomListener(myViewState);
     initMouseListeners();
   }
 

@@ -210,7 +210,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     myUIConfiguration.setDpiOption(getUiFacadeImpl().getDpiOption());
 
     class TaskManagerConfigImpl implements TaskManagerConfig {
-      final DefaultColorOption myDefaultColorOption = new GanttProjectImpl.DefaultTaskColorOption();
+      final DefaultColorOption myDefaultColorOption = new DefaultTaskColorOption();
 
       @Override
       public Color getDefaultColor() {
