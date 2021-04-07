@@ -100,7 +100,7 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
     getTreeTable().setRowHeight(20);
 
     getTreeTable().insertWithLeftyScrollBar(this);
-    area = new ResourceLoadGraphicArea(prj, prj.getZoomManager(), this) {
+    area = new ResourceLoadGraphicArea(prj, this) {
       @Override
       public boolean isExpanded(HumanResource hr) {
         return getResourceTreeTable().isExpanded(hr);
@@ -116,7 +116,6 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
 
     this.setBackground(new Color(0.0f, 0.0f, 0.0f));
     updateContextActions();
-    // applyComponentOrientation(lang.getComponentOrientation());
     myRowHeightAligner = new GanttProjectBase.RowHeightAligner(this, this.area.getChartModel());
   }
 
@@ -161,8 +160,8 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
     myResourceActionSet.getResourcePropertiesAction().setEnabled(getResources().length == 1);
     myResourceActionSet.getResourceDeleteAction().setEnabled(getResources().length > 0);
     myResourceActionSet.getAssignmentDelete().setEnabled(getResourceAssignments().length > 0);
-    appli.getViewManager().getCopyAction().setEnabled(getResources().length > 0);
-    appli.getViewManager().getCutAction().setEnabled(getResources().length > 0);
+    appli.getCopyAction().setEnabled(getResources().length > 0);
+    appli.getCutAction().setEnabled(getResources().length > 0);
   }
 
   @Override
@@ -245,11 +244,6 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
   // ResourceContext interface
   @Override
   public HumanResource[] getResources() {
-    // ProjectResource[] res;
-    // List allRes = model.getAllResouces();
-    // res = new ProjectResource[allRes.size()];
-    // model.getAllResouces().toArray(res);
-    // return res;
     DefaultMutableTreeTableNode[] tNodes = getSelectedNodes();
     if (tNodes == null) {
       return new HumanResource[0];
@@ -264,7 +258,7 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
     HumanResource[] res = new HumanResource[nbHumanResource];
     for (int i = 0; i < nbHumanResource; i++) {
       if (tNodes[i] instanceof ResourceNode) {
-        res[i] = (HumanResource) ((ResourceNode) tNodes[i]).getUserObject();
+        res[i] = (HumanResource) tNodes[i].getUserObject();
       }
     }
     return res;
@@ -289,7 +283,7 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
    * Return the list of the person
    */
   public List<HumanResource> getPeople() {
-    return getTreeModel().getAllResouces();
+    return getTreeModel().getAllResources();
   }
 
   public ResourceTreeTable getResourceTreeTable() {
@@ -304,7 +298,7 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
    * Return the number of people on the list
    */
   public int nbPeople() {
-    return getTreeModel().getAllResouces().size();
+    return getTreeModel().getAllResources().size();
   }
 
   /**
@@ -333,7 +327,7 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
       res = new ResourceAssignment[nbAssign];
       for (int i = 0; i < nbAssign; i++) {
         if (tNodes[i] instanceof AssignmentNode) {
-          res[i] = (ResourceAssignment) ((AssignmentNode) tNodes[i]).getUserObject();
+          res[i] = (ResourceAssignment) tNodes[i].getUserObject();
         }
       }
     }

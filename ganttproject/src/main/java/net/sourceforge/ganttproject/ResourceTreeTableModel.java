@@ -199,7 +199,7 @@ public class ResourceTreeTableModel extends DefaultTreeTableModel {
     myResourceManager.clear();
   }
 
-  public List<HumanResource> getAllResouces() {
+  public List<HumanResource> getAllResources() {
     return myResourceManager.getResources();
   }
 
