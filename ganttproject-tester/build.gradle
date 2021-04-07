@@ -2,6 +2,7 @@ buildscript {
     ext.kotlin_version = '1.4.32'
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -22,6 +23,7 @@ dependencies {
 
     testCompile fileTree(dir: project.projectDir.absolutePath + "/resources")
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testImplementation "org.mockito:mockito-core:1.+"
 }
 
 sourceSets {

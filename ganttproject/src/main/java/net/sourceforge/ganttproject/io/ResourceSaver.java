@@ -64,19 +64,18 @@ class ResourceSaver extends SaverBase {
 
   private void saveCustomProperties(IGanttProject project, HumanResource resource, TransformerHandler handler)
       throws SAXException {
-    // CustomPropertyManager customPropsManager =
-    // project.getHumanResourceManager().getCustomPropertyManager();
     AttributesImpl attrs = new AttributesImpl();
     List<CustomProperty> properties = resource.getCustomProperties();
     for (int i = 0; i < properties.size(); i++) {
-      CustomProperty nextProperty = properties.get(i);
-      CustomPropertyDefinition nextDefinition = nextProperty.getDefinition();
-      assert nextProperty != null : "WTF? null property in properties=" + properties;
-      assert nextDefinition != null : "WTF? null property definition for property=" + i + "(value="
-          + nextProperty.getValueAsString() + ")";
-      if (nextProperty.getValue() != null && !nextProperty.getValue().equals(nextDefinition.getDefaultValue())) {
-        addAttribute("definition-id", nextDefinition.getID(), attrs);
-        addAttribute("value", nextProperty.getValueAsString(), attrs);
+      CustomProperty property = properties.get(i);
+      CustomPropertyDefinition propertyDefinition = property.getDefinition();
+
+      assert propertyDefinition != null : "WTF? null property definition for property=" + i + "(value="
+          + property.getValueAsString() + ")";
+
+      if (property.getValue() != null && !property.getValue().equals(propertyDefinition.getDefaultValue())) {
+        addAttribute("definition-id", propertyDefinition.getID(), attrs);
+        addAttribute("value", property.getValueAsString(), attrs);
         emptyElement("custom-property", attrs, handler);
       }
     }
@@ -85,26 +84,16 @@ class ResourceSaver extends SaverBase {
   private void saveCustomColumnDefinitions(IGanttProject project, TransformerHandler handler) throws SAXException {
     CustomPropertyManager customPropsManager = project.getHumanResourceManager().getCustomPropertyManager();
     List<CustomPropertyDefinition> definitions = customPropsManager.getDefinitions();
-    // HumanResourceManager hrManager = (HumanResourceManager)
-    // project.getHumanResourceManager();
-    // Map customFields = hrManager.getCustomFields();
-    // if (customFields.size()==0) {
-    // return;
-    // }
     final AttributesImpl attrs = new AttributesImpl();
-    // startElement("custom-properties-definition", handler);
-    for (int i = 0; i < definitions.size(); i++) {
-      // ResourceColumn nextField = (ResourceColumn) fields.next();
-      CustomPropertyDefinition nextDefinition = definitions.get(i);
+    for (CustomPropertyDefinition nextDefinition : definitions) {
       addAttribute("id", nextDefinition.getID(), attrs);
       addAttribute("name", nextDefinition.getName(), attrs);
       addAttribute("type", nextDefinition.getTypeAsString(), attrs);
       addAttribute("default-value", nextDefinition.getDefaultValueAsString(), attrs);
-      for (Map.Entry<String,String> kv : nextDefinition.getAttributes().entrySet()) {
+      for (Map.Entry<String, String> kv : nextDefinition.getAttributes().entrySet()) {
         addAttribute(kv.getKey(), kv.getValue(), attrs);
       }
       emptyElement("custom-property-definition", attrs, handler);
     }
-    // endElement("custom-properties-definition", handler);
   }
 }

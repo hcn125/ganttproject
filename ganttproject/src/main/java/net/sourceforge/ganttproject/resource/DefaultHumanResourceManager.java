@@ -63,7 +63,7 @@ public class DefaultHumanResourceManager implements HumanResourceManager {
 
   @Override
   public HumanResource newHumanResource() {
-    HumanResource result = new HumanResource(this);
+    HumanResource result = new HumanResource("", -1, this);
     result.setRole(myDefaultRole);
     return result;
   }
