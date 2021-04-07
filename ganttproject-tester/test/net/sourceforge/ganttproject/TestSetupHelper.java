@@ -9,7 +9,7 @@ import biz.ganttproject.core.time.GanttCalendar;
 import biz.ganttproject.core.time.TimeUnitStack;
 import biz.ganttproject.core.time.impl.GPTimeUnitStack;
 import net.sourceforge.ganttproject.gui.NotificationManager;
-import net.sourceforge.ganttproject.resource.HumanResourceManager;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.roles.RoleManager;
 import net.sourceforge.ganttproject.roles.RoleManagerImpl;
 import net.sourceforge.ganttproject.task.CustomColumnsManager;
@@ -25,7 +25,7 @@ public class TestSetupHelper {
 
         private TimeUnitStack myTimeUnitStack;
 
-        private HumanResourceManager myResourceManager;
+        private DefaultHumanResourceManager myResourceManager;
 
         private RoleManager myRoleManager;
 
@@ -34,7 +34,7 @@ public class TestSetupHelper {
         public TaskManagerBuilder() {
             myTimeUnitStack = new GPTimeUnitStack();
             myRoleManager = new RoleManagerImpl();
-            myResourceManager = new HumanResourceManager(myRoleManager.getDefaultRole(), new CustomColumnsManager(), myRoleManager);
+            myResourceManager = new DefaultHumanResourceManager(myRoleManager.getDefaultRole(), new CustomColumnsManager(), myRoleManager);
         }
 
         @Override
@@ -58,7 +58,7 @@ public class TestSetupHelper {
         }
 
         @Override
-        public HumanResourceManager getResourceManager() {
+        public DefaultHumanResourceManager getResourceManager() {
             return myResourceManager;
         }
 

@@ -25,8 +25,9 @@ import junit.framework.TestCase;
 import net.sourceforge.ganttproject.GanttTask;
 import net.sourceforge.ganttproject.TestSetupHelper;
 import net.sourceforge.ganttproject.TestSetupHelper.TaskManagerBuilder;
+import net.sourceforge.ganttproject.resource.DefaultHumanResourceManager;
 import net.sourceforge.ganttproject.resource.HumanResource;
-import net.sourceforge.ganttproject.resource.HumanResourceManager;
+import net.sourceforge.ganttproject.resource.OwnedHumanResource;
 import net.sourceforge.ganttproject.task.ResourceAssignment;
 import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskManager;
@@ -119,11 +120,11 @@ public class ClipboardTaskProcessorTest extends TestCase {
 
   public void testAssignmentsCopy() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    HumanResourceManager hrMgr = builder.getResourceManager();
+    DefaultHumanResourceManager hrMgr = builder.getResourceManager();
     TaskManager taskManager = builder.build();
     Task task1 = taskManager.newTaskBuilder().build();
 
-    HumanResource res1 = new HumanResource("Joe", 1, hrMgr);
+    HumanResource res1 = new OwnedHumanResource("Joe", 1, hrMgr);
     hrMgr.add(res1);
     ResourceAssignment assgn1 = task1.getAssignmentCollection().addAssignment(res1);
     assgn1.setLoad(100f);
@@ -142,11 +143,11 @@ public class ClipboardTaskProcessorTest extends TestCase {
 
   public void testAssignmentsCut() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    HumanResourceManager hrMgr = builder.getResourceManager();
+    DefaultHumanResourceManager hrMgr = builder.getResourceManager();
     TaskManager taskManager = builder.build();
     Task task1 = taskManager.newTaskBuilder().build();
 
-    HumanResource res1 = new HumanResource("Joe", 1, hrMgr);
+    HumanResource res1 = new OwnedHumanResource("Joe", 1, hrMgr);
     hrMgr.add(res1);
     ResourceAssignment assgn1 = task1.getAssignmentCollection().addAssignment(res1);
     assgn1.setLoad(100f);
@@ -168,11 +169,11 @@ public class ClipboardTaskProcessorTest extends TestCase {
 
   public void testAssignmentsTruncated() {
     TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    HumanResourceManager hrMgr = builder.getResourceManager();
+    DefaultHumanResourceManager hrMgr = builder.getResourceManager();
     TaskManager taskManager = builder.build();
     Task task1 = taskManager.newTaskBuilder().build();
 
-    HumanResource res1 = new HumanResource("Joe", 1, hrMgr);
+    HumanResource res1 = new OwnedHumanResource("Joe", 1, hrMgr);
     hrMgr.add(res1);
     ResourceAssignment assgn1 = task1.getAssignmentCollection().addAssignment(res1);
     assgn1.setLoad(100f);
