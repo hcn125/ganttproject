@@ -52,7 +52,7 @@ import java.awt.event.MouseMotionListener;
  */
 public class ResourceLoadGraphicArea extends ChartComponentBase implements ResourceChart {
   /** The main application */
-  private final GanttProject appli;
+  private final GanttProjectBase appli;
 
   private final ChartModelResource myChartModel;
 
@@ -60,7 +60,7 @@ public class ResourceLoadGraphicArea extends ChartComponentBase implements Resou
 
   private final ResourceTreeUIFacade myTreeUi;
 
-  public ResourceLoadGraphicArea(GanttProject app, ResourceTreeUIFacade treeUi) {
+  public ResourceLoadGraphicArea(GanttProjectBase app, ResourceTreeUIFacade treeUi) {
     super(app.getProject(), app.getUIFacade(), app.getZoomManager());
     appli = app;
     myTreeUi = treeUi;

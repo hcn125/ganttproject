@@ -28,6 +28,7 @@ import biz.ganttproject.core.table.ColumnList;
 import biz.ganttproject.core.time.TimeUnitStack;
 import biz.ganttproject.core.time.impl.GPTimeUnitStack;
 import com.bardsoftware.eclipsito.update.Updater;
+import net.sourceforge.ganttproject.action.GPAction;
 import net.sourceforge.ganttproject.chart.Chart;
 import net.sourceforge.ganttproject.chart.ChartModelBase;
 import net.sourceforge.ganttproject.client.RssFeedChecker;
@@ -79,7 +80,7 @@ import java.util.Locale;
  *
  * @author dbarashev
  */
-abstract class GanttProjectBase extends JFrame implements IGanttProject, UIFacade {
+public abstract class GanttProjectBase extends JFrame implements IGanttProject, UIFacade {
   protected final static GanttLanguage language = GanttLanguage.getInstance();
   private final ViewManagerImpl myViewManager;
   private final List<ProjectEventListener> myModifiedStateChangeListeners = new ArrayList<ProjectEventListener>();
@@ -343,6 +344,14 @@ abstract class GanttProjectBase extends JFrame implements IGanttProject, UIFacad
   public Chart getActiveChart() {
     return myViewManager.getSelectedView().getChart();
   }
+
+  public abstract GanttResourcePanel getResourcePanel();
+
+  public abstract GPAction getCutAction();
+
+  public abstract GPAction getCopyAction();
+
+  public abstract GPAction getPasteAction();
 
   protected static class RowHeightAligner implements GPOptionChangeListener {
     private final ChartModelBase myChartModel;

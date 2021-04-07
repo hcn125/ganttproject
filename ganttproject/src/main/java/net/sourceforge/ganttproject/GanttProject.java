@@ -488,7 +488,6 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   }
 
-
   @Override
   public TaskContainmentHierarchyFacade getTaskContainment() {
     if (myFacadeInvalidator == null) {

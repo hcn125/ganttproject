@@ -52,7 +52,7 @@ import java.util.List;
 public class GanttResourcePanel extends TreeTableContainer<HumanResource, ResourceTreeTable, ResourceTreeTableModel>
     implements ResourceView, ResourceContext, AssignmentContext, ResourceTreeUIFacade {
 
-  public final GanttProject appli;
+  public final GanttProjectBase appli;
 
   private final ResourceActionSet myResourceActionSet;
   private final GanttProjectBase.RowHeightAligner myRowHeightAligner;
@@ -70,7 +70,7 @@ public class GanttResourcePanel extends TreeTableContainer<HumanResource, Resour
     return Pair.create(new ResourceTreeTable(project, model, uiFacade), model);
   }
 
-  public GanttResourcePanel(final GanttProject prj, final UIFacade uiFacade) {
+  public GanttResourcePanel(final GanttProjectBase prj, final UIFacade uiFacade) {
     super(createTreeTable(prj.getProject(), uiFacade));
     appli = prj;
     myUIFacade = uiFacade;

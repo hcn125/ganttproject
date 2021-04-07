@@ -25,6 +25,7 @@ import net.sourceforge.ganttproject.CustomPropertyDefinition;
 import net.sourceforge.ganttproject.CustomPropertyManager;
 import net.sourceforge.ganttproject.roles.Role;
 import net.sourceforge.ganttproject.roles.RoleManager;
+import net.sourceforge.ganttproject.task.CustomColumnsManager;
 import net.sourceforge.ganttproject.undo.GPUndoManager;
 
 import java.io.OutputStream;
@@ -50,6 +51,10 @@ public class DefaultHumanResourceManager implements HumanResourceManager {
   private final CustomPropertyManager myCustomPropertyManager;
 
   private final RoleManager myRoleManager;
+
+  public  DefaultHumanResourceManager() {
+    this(null, new CustomColumnsManager());
+  }
 
   public DefaultHumanResourceManager(Role defaultRole, CustomPropertyManager customPropertyManager) {
     this(defaultRole, customPropertyManager, null);
